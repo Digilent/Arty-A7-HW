@@ -46,7 +46,7 @@ end component;
 
 --Sync Generation constants
 
-----***640x480@60Hz***--  Requires 25 MHz clock
+--***640x480@60Hz***--  Requires 25 MHz clock
 --constant FRAME_WIDTH : natural := 640;
 --constant FRAME_HEIGHT : natural := 480;
 
