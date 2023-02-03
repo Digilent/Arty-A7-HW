@@ -31,7 +31,6 @@ module XADCdemo(
  );
    
    wire enable;
-   reg bad_address = 0;  
    wire ready;
    wire [15:0] data;   
    reg [6:0] Address_in;     
@@ -42,7 +41,7 @@ module XADCdemo(
         (
         .daddr_in(Address_in),            // Address bus for the dynamic reconfiguration port
         .dclk_in(CLK100MHZ),             // Clock input for the dynamic reconfiguration port
-        .den_in(enable & ~bad_address),              // Enable Signal for the dynamic reconfiguration port
+        .den_in(enable),              // Enable Signal for the dynamic reconfiguration port
         .di_in(0),               // Input data bus for the dynamic reconfiguration port
         .dwe_in(0),              // Write Enable for the dynamic reconfiguration port
         .reset_in(0),            // Reset signal for the System Monitor control logic
@@ -108,10 +107,5 @@ module XADCdemo(
             8: Address_in <= 8'h1E; //A10 - A11 diferential
             default: Address_in <= 8'h14; //A0
             endcase
-            
-            if (sw >= 4'h9) // switch default case
-                bad_address <= 1'b1;
-            else
-                bad_address <= 1'b0;
       end
 endmodule
